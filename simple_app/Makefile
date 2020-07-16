@@ -6,7 +6,7 @@ big-file:
 
 # Build the docker image
 build:
-	docker build -f Dockerfile.v2 -t mobilenet .
+	docker build -f Dockerfile -t mobilenet .
 
 # Run the app locally
 run:
@@ -14,7 +14,7 @@ run:
 
 # Run the app in a container
 docker-run:
-	docker run -it --rm --name mobilenet -p 5000:5000 --gpus "device=0" mobilenet bash -c "cd src && flask run -h 0.0.0.0 -p 5000"
+	docker run -v $(PWD)/data:/data -it --rm --name mobilenet -p 5000:5000 --gpus "device=0" mobilenet bash -c "cd src && flask run -h 0.0.0.0 -p 5000"
 
 # Given a URL, make a prediction
 # make prediction url="<some-url">

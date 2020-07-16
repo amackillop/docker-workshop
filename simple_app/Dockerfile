@@ -1,8 +1,9 @@
 FROM python
 
-COPY . .
+COPY ./requirements.txt ./requirements.txt
 RUN  pip install -r requirements.txt
 
+COPY ./src /src
 CMD cd src && flask run
 
 
